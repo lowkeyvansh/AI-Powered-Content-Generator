@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Content Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>AI-Powered Content Generator</h1>
+    </header>
+    <main>
+        <section id="generator">
+            <form action="{{ url_for('generate') }}" method="POST">
+                <label for="prompt">Enter your prompt:</label>
+                <textarea id="prompt" name="prompt" rows="4" required>{{ prompt if prompt else '' }}</textarea>
+                <button type="submit">Generate Content</button>
+            </form>
+            {% if generated_text %}
+            <section id="result">
+                <h2>Generated Content</h2>
+                <p>{{ generated_text }}</p>
+            </section>
+            {% endif %}
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 AI-Powered Content Generator</p>
+    </footer>
+</body>
+</html>
